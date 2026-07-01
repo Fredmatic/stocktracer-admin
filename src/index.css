@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --color-ink: #16241F;
+  --color-paper: #EEF2EF;
+  --color-paper-raised: #FFFFFF;
+  --color-line: #D8E0DB;
+
+  --color-brand: #1F6F5C;
+  --color-brand-dark: #154A3D;
+  --color-brand-light: #E4EFE9;
+
+  --color-amber: #C8862E;
+  --color-amber-light: #FBF0DD;
+
+  --color-brick: #AB3B2D;
+  --color-brick-light: #F8E4E0;
+
+  --color-muted: #5C6B65;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+/* Dark mode — overrides the same variables every component already uses,
+   so no component needs dark: variants scattered through its JSX. Toggled
+   by adding/removing .dark on <html> (see ThemeContext). */
+.dark {
+  --color-ink: #E7EDE9;
+  --color-paper: #11211B;
+  --color-paper-raised: #1A2D26;
+  --color-line: #2C4239;
+
+  --color-brand: #3FA388;
+  --color-brand-dark: #6FC2AA;
+  --color-brand-light: #1E3A30;
+
+  --color-amber: #E0A857;
+  --color-amber-light: #3A2E18;
+
+  --color-brick: #E0786A;
+  --color-brick-light: #3A2320;
+
+  --color-muted: #8FA39A;
+}
+
+.dark body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Signature: ledger-style dotted rule under section headers,
+   echoing a market stall tally book. */
+.ledger-rule {
+  background-image: linear-gradient(to right, var(--color-line) 50%, transparent 50%);
+  background-size: 6px 1px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+  height: 1px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.input {
+  width: 100%;
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-line);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  color: var(--color-ink);
+}
+
+.input:focus {
+  border-color: var(--color-brand);
+}
+
+.btn-primary {
+  background: var(--color-brand);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.375rem;
+  transition: background 120ms ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-brand-dark);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+}
+
+.btn-secondary {
+  background: var(--color-paper-raised);
+  color: var(--color-ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-line);
+}
+
+.btn-secondary:hover {
+  background: var(--color-paper);
+}
+
+.card {
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+}
+
+.status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  display: inline-block;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
