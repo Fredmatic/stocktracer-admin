@@ -1,3 +1,86 @@
+/* ── Admin Dashboard CSS Variables ── */
+:root {
+  --surface-0: #eef2ef;
+  --surface-1: #f5f8f5;
+  --surface-2: #ffffff;
+  --border: #d8e0db;
+  --border-success: #a3c9b0;
+  --border-danger: #e8b4ae;
+  --border-accent: #1f6f5c;
+  --text-primary: #16241f;
+  --text-secondary: #5c6b65;
+  --text-muted: #8a9e96;
+  --text-success: #1a6b3c;
+  --text-danger: #ab3b2d;
+  --text-warning: #c8862e;
+  --text-accent: #1f6f5c;
+  --bg-success: #e6f4ec;
+  --bg-danger: #f8e4e0;
+  --bg-warning: #fbf0dd;
+  --bg-accent: #e4efe9;
+  --fill-primary: #1f6f5c;
+  --on-primary: #ffffff;
+  --radius: 6px;
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dark {
+  --surface-0: #11211b;
+  --surface-1: #1a2d26;
+  --surface-2: #1f3329;
+  --border: #2c4239;
+  --border-success: #2a5c3f;
+  --border-danger: #6b2f28;
+  --text-success: #6fcf97;
+  --text-danger: #e0786a;
+  --text-warning: #e0a857;
+  --text-accent: #3fa388;
+  --bg-success: #1a3328;
+  --bg-danger: #3a2320;
+  --bg-warning: #3a2e18;
+  --bg-accent: #1e3a30;
+}
+
+/* ── Admin input & button base styles ── */
+input,
+select {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 150ms;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--fill-primary);
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface-1);
+  color: var(--text-primary);
+  border-radius: var(--radius);
+  padding: 6px 14px;
+  font-size: 13px;
+  transition: opacity 150ms;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ───────────────────────────────────── */
+
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
@@ -30,25 +113,18 @@ body {
   font-family: var(--font-body);
 }
 
-/* Dark mode — overrides the same variables every component already uses,
-   so no component needs dark: variants scattered through its JSX. Toggled
-   by adding/removing .dark on <html> (see ThemeContext). */
 .dark {
   --color-ink: #E7EDE9;
   --color-paper: #11211B;
   --color-paper-raised: #1A2D26;
   --color-line: #2C4239;
-
   --color-brand: #3FA388;
   --color-brand-dark: #6FC2AA;
   --color-brand-light: #1E3A30;
-
   --color-amber: #E0A857;
   --color-amber-light: #3A2E18;
-
   --color-brick: #E0786A;
   --color-brick-light: #3A2320;
-
   --color-muted: #8FA39A;
 }
 
@@ -65,8 +141,6 @@ body {
   font-family: var(--font-mono);
 }
 
-/* Signature: ledger-style dotted rule under section headers,
-   echoing a market stall tally book. */
 .ledger-rule {
   background-image: linear-gradient(to right, var(--color-line) 50%, transparent 50%);
   background-size: 6px 1px;
