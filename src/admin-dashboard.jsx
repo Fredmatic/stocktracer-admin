@@ -145,7 +145,14 @@ export default function AdminDashboard() {
                 staffCount: staffMap[b.id] || 0,
             })))
         } catch (err) {
-            showToast("Failed to load: " + err.message, "danger")
+            const msg = err.message || ''
+            if (msg.includes('JWT expired') || msg.includes('PGRST303')) {
+                showToast('Session expired — please sign in again', 'danger')
+                setTimeout(() => setSession(null), 2000)
+            } else {
+                showToast('Failed to load: ' + msg, 'danger')
+            }
+
         } finally {
             setLoading(false)
         }
@@ -169,7 +176,14 @@ export default function AdminDashboard() {
             if (selected?.id === id) setSelected((s) => ({ ...s, ...updates }))
             showToast(status === "active" ? "Account activated ✓" : status === "trial" ? "Reset to trial ✓" : "Account deactivated ✓")
         } catch (err) {
-            showToast(err.message, "danger")
+            const msg = err.message || ''
+            if (msg.includes('JWT expired') || msg.includes('PGRST303')) {
+                showToast('Session expired — please sign in again', 'danger')
+                setTimeout(() => setSession(null), 2000)
+            } else {
+                showToast(msg, 'danger')
+            }
+
         } finally {
             setBusyId(null)
         }
